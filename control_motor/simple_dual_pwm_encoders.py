@@ -119,8 +119,8 @@ class QuadRPI:
         RPI.setup(self.b, RPI.IN, pull_up_down=RPI.PUD_UP if pullup else RPI.PUD_OFF)
         self.last_state = (RPI.input(self.a) << 1) | RPI.input(self.b)
         self.last_t = time.perf_counter_ns()
-        RPI.add_event_detect(self.a, RPI.BOTH, callback=self._cb, bouncetime=0)
-        RPI.add_event_detect(self.b, RPI.BOTH, callback=self._cb, bouncetime=0)
+        RPI.add_event_detect(self.a, RPI.BOTH, callback=self._cb, bouncetime=1)
+        RPI.add_event_detect(self.b, RPI.BOTH, callback=self._cb, bouncetime=1)
 
     def _cb(self, _):
         now = time.perf_counter_ns()
